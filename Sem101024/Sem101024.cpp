@@ -1,6 +1,5 @@
 #include <iostream>
 
-// Declare the functions prototype above main
 static void Problem1();
 static void Problem2();
 static void Problem3();
@@ -154,11 +153,8 @@ static void Problem5() {
 		minutes -= 60;
 		hours++;
 	}
-
-	// При добавяне на 15 няма как да минем повече от 24 часа => други проверки са излишни
-	if (hours == 24) {
-		hours = 0;
-	}
+	
+	hours %= 24;
 
 	std::cout << (hours < 10 ? "0" : "") << hours << ":"
 		<< (minutes < 10 ? "0" : "") << minutes << '\n' << '\n';
@@ -170,15 +166,13 @@ static void Problem5() {
 // стандартния 5 на брой цели числа. Да се изведе на стандартния изход "yes", ако въведената 
 // поредица е трион, или "no", в противен случай.
 static void Problem6() {
-	int a, b, c, d, e;
-	std::cin >> a >> b >> c >> d >> e;
+	int n1, n2, n3, n4, n5;
+	std::cin >> n1 >> n2 >> n3 >> n4 >> n5;
 
-	if ((b >= a && b >= c) && (d >= c && d >= e)) {
-		std::cout << "yes" << '\n' << '\n';
-	}
-	else {
-		std::cout << "no" << '\n' << '\n';
-	}
+	bool isTrion = (n2 <= n1 && n2 <= n3 && n3 >= n4 && n4 <= n5) ||
+		(n2 >= n1 && n2 >= n3 && n3 <= n4 && n4 >= n5);
+
+	std::cout << (isTrion ? "yes" : "no") << '\n' << '\n';
 }
 
 //Да се напише програма, която при подадени радиус r и двумерна точка (х, у) проверява 
