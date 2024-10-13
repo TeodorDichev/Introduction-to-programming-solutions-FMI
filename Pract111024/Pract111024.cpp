@@ -1,11 +1,13 @@
 #include <iostream>
 
-// Problem1 - Problem3 too simple
+static void Problem1();
+static void Problem2();
+static void Problem3();
 static void Problem4();
-static void Problem5();
+// Problem5 - same as problem 1 from seminar
 static void Problem6();
-// Problem7 - same as problem 4 from seminar
-static void Problem8();
+static void Problem7();
+// Problem8(); - same as problem 6 from seminar
 static void Problem9();
 static void Problem10();
 static void Problem11();
@@ -19,9 +21,12 @@ static void Problem17();
 
 int main()
 {
-    //Problem4();
-    //Problem5();
-    //Problem6();
+    Problem1();
+    Problem2();
+    Problem3();
+    Problem4();
+    Problem6();
+    Problem7();
     Problem9();
     Problem10();
     Problem11();
@@ -31,6 +36,101 @@ int main()
     Problem16();
     Problem17();
 }
+
+// Отпечатайте на конзолата дали едно число е четно. 
+// Нека в мейна има точно един ред код, след като прочетете числото.
+static void Problem1() {
+    int num;
+    std::cin >> num;
+    std::cout << !(num % 2) << std::endl;
+}
+
+// Напишете програма, която приема 2 цели числа и отпечатва по-голямото от тях. 
+// Задачата да се реши както с if, така и с тернарен оператор.
+static void Problem2() {
+    int num1, num2;
+    std::cin >> num1 >> num2;
+
+    if (num1 < num2) {
+        std::cout << "By if: " << num2 << std::endl;
+    }
+    else {
+        std::cout << "By if: " << num1 << std::endl;
+    }
+    
+    std::cout << "By tertiary operator: " << (num1 < num2 ? num2 : num1) << std::endl;
+}
+
+// Да се напише програма, която чете от конзолата символ, и отпечатва на екрана ASCII 
+// кода на символа, ако е валиднo римскo число, и -1 - ако не е.
+static void Problem3() {
+    char ch;
+    std::cin >> ch;
+    switch (ch)
+    {
+        case 'I':
+        case 'V':
+        case 'X':
+        case 'M':
+        case 'L':
+        case 'D':
+            std::cout << (int)ch << std::endl;
+            break;
+
+    default:
+        std::cout << -1 << std::endl;
+        break;
+    }
+}
+
+// Създайте програма, която връща дали дадена година е високосна или не.
+// Високосна година е такава, деляща се на 4.
+// Ако годината се дели и на 100, то тя не е високосна.
+// Ако годината се дели и на 400, то тя отново е високосна.
+static void Problem4() {
+    int year;
+    std::cin >> year;
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+        std::cout << "Leap year" << std::endl;
+    }
+    else {
+        std::cout << "Not leap year" << std::endl;
+    }
+}
+
+// На конзолата се въвежда цяло число. Проверете дали числото е положително. 
+// В случай, че е положително - да се отпечата 1, ако е четно, и 0, ако е нечетно. 
+// В случай, че е отрицателно - да се отпечата 1, ако числото е по-малко от -5, и 0 в противен случай.
+static void Problem6() {
+    int num;
+    std::cin >> num;
+
+    if (num > 0) {
+        if (num % 2 == 0) {
+            std::cout << 1 << std::endl;
+        }
+        else {
+            std::cout << 0 << std::endl;
+        }
+    }
+    else {
+        if (num < -5) {
+            std::cout << 1 << std::endl;
+        }
+        else {
+            std::cout << 0 << std::endl;
+        }
+    }
+}
+
+// По подадени x1, y1, x2, y2, x и y, където x1, y1 са координатите на горния ляв ъгъл на правоъгълник, 
+// а x2, y2 на долния десен, проверете дали точката (x,y) се намира вътре в правоъгълника.
+static void Problem7() {
+    int x1, y1, x2, y2, x, y;
+    std::cin >> x1 >> y1 >> x2 >> y2 >> x >> y;
+    std::cout << ((x1 < x && x < x2) && (y2 < y && y < y1)) << std::endl;
+}
+
 // Напишете програма, която проверява дали дадено 4-цифрено число е палиндром.
 static void Problem9() {
     int number;
