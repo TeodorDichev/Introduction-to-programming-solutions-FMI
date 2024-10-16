@@ -21,20 +21,7 @@ static void Problem17();
 
 int main()
 {
-    Problem1();
-    Problem2();
-    Problem3();
-    Problem4();
-    Problem6();
-    Problem7();
-    Problem9();
-    Problem10();
-    Problem11();
-    Problem12();
-    Problem14();
-    Problem15();
-    Problem16();
-    Problem17();
+
 }
 
 // Отпечатайте на конзолата дали едно число е четно. 
@@ -272,7 +259,6 @@ static void Problem16() {
     default:
         std::cout << "Incorrect input" << std::endl;
     }
-
 }
 
 // Да се напише програма, която получава 5 латински букви. Първите две от тях са главни и 
@@ -283,8 +269,20 @@ static void Problem17() {
     char a, b, c, d, e;
     std::cin >> a >> b >> c >> d >> e;
 
-    std::cout << std::boolalpha << (a < e < b || c < e < d) << std::endl;
-    std::cout << std::boolalpha << (a < e < b && c < e < d) << std::endl;
-    std::cout << std::boolalpha << (a < e < b && !(c < e < d)) << std::endl;
-    std::cout << std::boolalpha << (a < e < b && !(c < e < d) || !(a < e < b) && (c < e < d)) << std::endl;
+    //making the solution case insensitive
+    a += 'a' - 'A';
+    b += 'a' - 'A';
+
+    bool isInFirst = e >= a && e <= b;
+    bool isInSecond = e >= c && e <= d;
+
+    bool isUnion = isInFirst || isInSecond;
+    bool isIntersection = isInFirst && isInSecond;
+    bool isDifference = isInFirst && !isInSecond;
+    bool isInOnlySet = isUnion && !isIntersection;
+
+    std::cout << "Is in intersection: " << std::boolalpha << isUnion << std::endl;
+    std::cout << "Is in union: " << std::boolalpha << isIntersection << std::endl;
+    std::cout << "Is in difference: " << std::boolalpha << isDifference << std::endl;
+    std::cout << "Is in only one of the sets: " << std::boolalpha << isInOnlySet << std::endl;
 }
