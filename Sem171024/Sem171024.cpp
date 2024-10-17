@@ -120,20 +120,20 @@ static void Problem6() {
     std::cin >> n;
     int cnt = 0;
 
-    if (n <= 1)
-		std::cout << n << " is not prime" << std::endl;
-    else {
-
-        for (int i = 1; i <= n; i++)
-            if (n % i == 0)
-                cnt++;
-
-        if (cnt > 2)
-            std::cout << n << " is not prime" << std::endl;
-
-        else
-            std::cout << n << " is prime" << std::endl;
+    if (n <= 1) {
+        std::cout << n << " is not prime" << std::endl;
+        return;
     }
+    else {
+        int sqrtN = sqrt(n);
+        for (int i = 2; i <= sqrtN; i++)
+            if (n % i == 0) {
+                std::cout << n << " is not prime" << std::endl;
+                return;
+            }
+    }
+    std::cout << n << " is prime" << std::endl;
+
 }
 
 // Напишете програма, която приема естествено число и отпечатва разбиването му 
@@ -142,7 +142,8 @@ static void Problem7() {
 	int n, d = 2;
 	std::cin >> n;
 
-	for (int i = 2; i <= n; i++) {
+    int sqrtN = sqrt(n);
+	for (int i = 2; i <= sqrtN; i++) {
 		if (n % i == 0) {
 			std::cout << i << ", ";
 			while (n % i == 0)
