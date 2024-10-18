@@ -1,32 +1,32 @@
 #include <iostream>
 
-static void Problem1();
-static void Problem2();
-static void Problem3();
-static void Problem4();
+void Problem1();
+void Problem2();
+ void Problem3();
+ void Problem4();
 // Problem5 - same as problem 1 from seminar
-static void Problem6();
-static void Problem7();
+ void Problem6();
+ void Problem7();
 // Problem8(); - same as problem 6 from seminar
-static void Problem9();
-static void Problem10();
-static void Problem11();
-static void Problem12();
+ void Problem9();
+ void Problem10();
+ void Problem11();
+ void Problem12();
 // Problem13 - same as problem 7 from seminar
-static void Problem14();
-static void Problem15();
-static void Problem16();
-static void Problem17();
+ void Problem14();
+ void Problem15();
+ void Problem16();
+ void Problem17();
 
 
 int main()
 {
-
+    Problem1();
 }
 
 // Отпечатайте на конзолата дали едно число е четно. 
 // Нека в мейна има точно един ред код, след като прочетете числото.
-static void Problem1() {
+void Problem1() {
     int num;
     std::cin >> num;
     std::cout << !(num % 2) << std::endl;
@@ -34,7 +34,7 @@ static void Problem1() {
 
 // Напишете програма, която приема 2 цели числа и отпечатва по-голямото от тях. 
 // Задачата да се реши както с if, така и с тернарен оператор.
-static void Problem2() {
+ void Problem2() {
     int num1, num2;
     std::cin >> num1 >> num2;
 
@@ -50,7 +50,7 @@ static void Problem2() {
 
 // Да се напише програма, която чете от конзолата символ, и отпечатва на екрана ASCII 
 // кода на символа, ако е валиднo римскo число, и -1 - ако не е.
-static void Problem3() {
+ void Problem3() {
     char ch;
     std::cin >> ch;
     switch (ch)
@@ -74,7 +74,7 @@ static void Problem3() {
 // Високосна година е такава, деляща се на 4.
 // Ако годината се дели и на 100, то тя не е високосна.
 // Ако годината се дели и на 400, то тя отново е високосна.
-static void Problem4() {
+ void Problem4() {
     int year;
     std::cin >> year;
     if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
@@ -88,7 +88,7 @@ static void Problem4() {
 // На конзолата се въвежда цяло число. Проверете дали числото е положително. 
 // В случай, че е положително - да се отпечата 1, ако е четно, и 0, ако е нечетно. 
 // В случай, че е отрицателно - да се отпечата 1, ако числото е по-малко от -5, и 0 в противен случай.
-static void Problem6() {
+ void Problem6() {
     int num;
     std::cin >> num;
 
@@ -112,21 +112,21 @@ static void Problem6() {
 
 // По подадени x1, y1, x2, y2, x и y, където x1, y1 са координатите на горния ляв ъгъл на правоъгълник, 
 // а x2, y2 на долния десен, проверете дали точката (x,y) се намира вътре в правоъгълника.
-static void Problem7() {
+ void Problem7() {
     int x1, y1, x2, y2, x, y;
     std::cin >> x1 >> y1 >> x2 >> y2 >> x >> y;
     std::cout << ((x1 < x && x < x2) && (y2 < y && y < y1)) << std::endl;
 }
 
 // Напишете програма, която проверява дали дадено 4-цифрено число е палиндром.
-static void Problem9() {
+ void Problem9() {
     int number;
     std::cin >> number;
     std::cout << (number % 10 == number / 1000) && (number / 10 % 10 == number / 100 % 10) << '\n';
 }
 
 // От конзолата се въвеждат целите числата a, b и c. Сортирайте ги във възходящ ред.
-static void Problem10() {
+ void Problem10() {
     int a, b, c;
     std::cin >> a >> b >> c;
     if (a > b) {
@@ -149,7 +149,7 @@ static void Problem10() {
 }
 
 // Напишете програма, която получава число от конзолата и отпечатва дали то е цяло или не.
-static void Problem11() {
+ void Problem11() {
     float number;
     float epsilon = 0.0000001;
     std::cin >> number;
@@ -159,7 +159,7 @@ static void Problem11() {
 // От конзолата се въвеждат дължините на трите страни на триъгълник (реални положителни числа). 
 // Нека програмата извежда подходящо съобщение на конзолата, ако тези страни са валидни и ако не са. 
 // Входът не е гарантирано коректен - да се извежда различно съобщение и за него.
-static void Problem12() {
+ void Problem12() {
     float a, b, c;
     std::cin >> a >> b >> c;
 
@@ -173,7 +173,7 @@ static void Problem12() {
 
 // Създайте калкулатор, поддържащ операциите +, -, *, / на две реални числа. 
 // От конзолата се прочита число, операция и второ число и се извежда резултатът.
-static void Problem14() {
+ void Problem14() {
     float num1, num2;
     char operation;
     std::cin >> num1 >> operation >> num2;
@@ -202,7 +202,7 @@ static void Problem14() {
 // От това число се формират 2 нови 2-цифрени числа. Първото число се формира от 1-та и 4-та цифра 
 // на въведеното число. Второто число се формира от 2-рa - 3-та цифра на въведеното число. 
 // На екрана да се изведе дали 1-то ново число e по-малко <, равно = или по-голямо от 2-то число.
-static void Problem15() {
+ void Problem15() {
     int number;
     std::cin >> number;
     int num1 = (number / 1000) * 10 + number % 10;
@@ -223,7 +223,7 @@ static void Problem15() {
 // принтира всички четни числа по-големи или равни на числото, намиращи се в интервала. 
 // Ако е нечетно, принтираме всички по-големи или равни нечетни числа. (Опитайте се да 
 // направите кода максимално четим)
-static void Problem16() {
+ void Problem16() {
     int n;
     std::cin >> n;
     switch (n)
@@ -265,7 +265,7 @@ static void Problem16() {
 // образуват множеството A, където A съдържа всички букви между въпросните две букви, 
 // включително самите тях. Вторите две букви са малки и образуват множеството B, където 
 // B съдържа всички букви между тях, включително самите тях.
-static void Problem17() {
+ void Problem17() {
     char a, b, c, d, e;
     std::cin >> a >> b >> c >> d >> e;
 

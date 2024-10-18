@@ -1,14 +1,14 @@
 #include <iostream>
 
-static void Problem1();
-static void Problem2();
-static void Problem3();
-static void Problem4();
-static void Problem5();
-static void Problem6();
-static void Problem7();
-static void Problem8();
-static void Problem9();
+ void Problem1();
+ void Problem2();
+ void Problem3();
+ void Problem4();
+ void Problem5();
+ void Problem6();
+ void Problem7();
+ void Problem8();
+ void Problem9();
 
 int main()
 {
@@ -24,21 +24,21 @@ int main()
 }
 
 // Въвежда се цяло число. Отпечатайте 1, ако числото е четно и 0, ако е нечетно.
-static void Problem1() {
+ void Problem1() {
     int number;
     std::cin >> number;
     std::cout << !(number % 2) << std::endl;
 }
 
 // Въвежда се трицифрено цяло число n. Да се отпечата обърнатото число събрано с единица.
-static void Problem2() {
+ void Problem2() {
     int num;
     std::cin >> num;
     std::cout << num % 10 << num / 10 % 10 << num / 100 + 1 << std::endl;
 }
 
 // Въвежа се символ. Да се отпечата 1, ако е английска гласна буква, и 0, ако не е.
-static void Problem3() {
+ void Problem3() {
     char ch;
     std::cin >> ch;
     std::cout << (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
@@ -47,7 +47,7 @@ static void Problem3() {
 }
 
 // Въвежа се цяло число. Да се отпечата 1, ако числото е валидна оценка от училище, и 0, ако не е валидна.
-static void Problem4() {
+ void Problem4() {
     int grade;
     std::cin >> grade;
     bool isValidGrade = grade <= 6 && grade >= 2;
@@ -55,14 +55,14 @@ static void Problem4() {
 }
 
 // Въвежа се цяло число. Да се отпечата без последната цифра.
-static void Problem5() {
+ void Problem5() {
     int inputNumber;
     std::cin >> inputNumber;
     std::cout << inputNumber / 10 << std::endl;
 }
 
 // Напишете програма, която въвежда две числа - a и b и извежда като резултат (a + b)^4 - (a-b)^2
-static void Problem6() {
+ void Problem6() {
     int a, b;
     std::cin >> a >> b;
     int sum = a + b;
@@ -73,7 +73,7 @@ static void Problem6() {
 
 // Въвежда се цяло число n - n лева. Да се изведе на конзолата как може да се разпределят по банкноти,
 // така че да имаме минимален брой банкноти.
-static void Problem7() {
+ void Problem7() {
     int n = 0;
     std::cin >> n;
     int stot = n / 100;
@@ -98,7 +98,7 @@ static void Problem7() {
 }
 
 // Въвеждат се две числа. Да се отпечата по-голямото от двете.
-static void Problem8() {
+ void Problem8() {
     int a1, b1;
     std::cin >> a1 >> b1;
     bool marker = a1 < b1;
@@ -106,7 +106,7 @@ static void Problem8() {
 }
 
 // Имате две променливи от тип int да се разменят техните стойности.
-static void Problem9() {
+ void Problem9() {
     int a2, b2;
     std::cin >> a2 >> b2;
     a2 += b2;

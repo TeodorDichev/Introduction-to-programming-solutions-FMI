@@ -1,12 +1,12 @@
 #include <iostream>
 
-static void Problem1();
-static void Problem2();
-static void Problem3();
-static void Problem4();
-static void Problem5();
-static void Problem6();
-static void Problem7();
+ void Problem1();
+ void Problem2();
+ void Problem3();
+ void Problem4();
+ void Problem5();
+ void Problem6();
+ void Problem7();
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
 }
 
 // Да се напише програма, която въвежда цяло число отпечатава с думи кой ден от седмицата е.
-static void Problem1() {
+ void Problem1() {
 	int dayNum;
 	std::cin >> dayNum;
 	switch (dayNum)
@@ -54,7 +54,7 @@ static void Problem1() {
 
 // (Between 100 and 200): Да се напише програма, която въвежда цяло число и проверява дали е 
 // под 100, между 100 и 200 или над 200. Да се отпечатат съответно съобщения като в примерите по-долу:
-static void Problem2() {
+ void Problem2() {
 	int number;
 	std::cin >> number;
 	if (number > 200) {
@@ -73,7 +73,7 @@ static void Problem2() {
 // над 10 и до 50 отпечатайте “average”. При скорост над 50 и до 150 отпечатайте “fast”. 
 // При скорост над 150 и до 1000 отпечатайте “ultra fast”. При по-висока скорост отпечатайте 
 // “extremely fast”
-static void Problem3() {
+ void Problem3() {
 	float speed;
 	std::cin >> speed;
 	if (speed <= 10) {
@@ -101,7 +101,7 @@ static void Problem3() {
 // дължините на страните му. Ако фигурата е кръг, на следващия ред чете едно число – радиусът 
 // на кръга. Ако фигурата е триъгълник, на следващите два реда четат две числа – дължината на 
 // страната му и дължината на височината към нея.
-static void Problem4() {
+ void Problem4() {
 	char figure;
 	std::cin >> figure;
 
@@ -145,7 +145,7 @@ static void Problem4() {
 // денонощие и изчислява колко ще е часът след 15 минути. Резултатът да се отпечата във 
 // формат hh:mm. Часовете винаги са между 0 и 23, а минутите винаги са между 0 и 59. 
 // Часовете и минутите се изписват винаги с по две цифри, с водеща нула когато е необходимо
-static void Problem5() {
+ void Problem5() {
 	int hours, minutes;
 	std::cin >> hours >> minutes;
 	minutes += 15;
@@ -165,7 +165,7 @@ static void Problem5() {
 // и последния елемент имаме само по един съсед. Напишете програма, която въвежда от 
 // стандартния 5 на брой цели числа. Да се изведе на стандартния изход "yes", ако въведената 
 // поредица е трион, или "no", в противен случай.
-static void Problem6() {
+ void Problem6() {
 	int n1, n2, n3, n4, n5;
 	std::cin >> n1 >> n2 >> n3 >> n4 >> n5;
 
@@ -177,7 +177,7 @@ static void Problem6() {
 
 //Да се напише програма, която при подадени радиус r и двумерна точка (х, у) проверява 
 // дали точката се намира вътре/извън или по контура на окръжност с център (0,0).
-static void Problem7() {
+ void Problem7() {
 	float radius, x, y;
 	std::cin >> radius >> x >> y;
 	float distance = std::sqrt(x * x + y * y);

@@ -1,26 +1,27 @@
 #include <iostream>
 
-static void Problem1();
-static void Problem2();
-static void Problem3();
-static void Problem4();
-static void Problem5();
-static void Problem6();
-static void Problem7();
+ void Problem1();
+ void Problem2();
+ void Problem3();
+ void Problem4();
+ void Problem5();
+ void Problem6();
+ void Problem7();
 
 int main()
 {
-	Problem1();
-	Problem2();
-	Problem3();
-	Problem4();
-	Problem5();
-	Problem6();
+	//Problem1();
+	//Problem2();
+	//Problem3();
+	//Problem4();
+	//Problem5();
+	//Problem6();
 	Problem7();
 }
+
 // Да се напише програма, която приема поток от числа.Числата се събират, докато не срещне числото 0.
 // Тогава трябва да се отпечата акумулираният резултат и програмата да приключи.
-static void Problem1() {
+ void Problem1() {
     int n, sum = 0;
     do{
         std::cin >> n;
@@ -30,7 +31,7 @@ static void Problem1() {
 }
 
 // Да се напише програма, която приема цяло положително число, обръща го и го увеличава с 1.
-static void Problem2() {
+ void Problem2() {
     int n, revN = 0;
     std::cin >> n;
     
@@ -45,7 +46,7 @@ static void Problem2() {
 
 // Напишете програма, която приема цяло число и връща най - често срещаната цифра.
 // Ако има няколко най - често срещани, то да се отпечата най - малката.
-static void Problem3() {
+ void Problem3() {
     int n = 0, mcd = 1, cnt1 = 0, cnt2 = 0, cnt3 = 0, cnt4 = 0, cnt5 = 0, cnt6 = 0, cnt7 = 0, cnt8 = 0, cnt9 = 0;
     std::cin >> n;
     while (n > 0) {
@@ -81,7 +82,7 @@ static void Problem3() {
 }
 
 // Напишете програма, която приема две естествени числа и връща най-големият им общ делител.
-static void Problem4() {
+ void Problem4() {
     int a, b;
     std::cin >> a >> b;
 
@@ -98,7 +99,7 @@ static void Problem4() {
 }
 
 // Напишете програма, която приема две естествени числа и връща най-малкото им общо кратно.
-static void Problem5() {
+ void Problem5() {
     int a, b;
     std::cin >> a >> b;
 
@@ -115,8 +116,8 @@ static void Problem5() {
 }
 
 // Напишете програма, която приема естествено число и връща дали числото е просто.
-static void Problem6() {
-    int n, d = 2;
+ void Problem6() {
+    int n;
     std::cin >> n;
     int cnt = 0;
 
@@ -138,16 +139,32 @@ static void Problem6() {
 
 // Напишете програма, която приема естествено число и отпечатва разбиването му 
 // на прости множители, сортирани низходящо.
-static void Problem7() {
-	int n, d = 2;
+ void Problem7() {
+	int n;
 	std::cin >> n;
 
-    int sqrtN = sqrt(n);
-	for (int i = 2; i <= sqrtN; i++) {
+	for (int i = n; i >= 2; i--) {
+        bool isDelPrime = true;
+
 		if (n % i == 0) {
-			std::cout << i << ", ";
-			while (n % i == 0)
-				n /= i;
+
+            // checking if 'i' is prime
+            int sqrtN = sqrt(i);
+            for (int j = 2; j <= sqrtN; j++)
+                if (i % j == 0) {
+                    isDelPrime = false;
+                    break;
+                }
+
+            if (isDelPrime) {
+                int cnt = 0;
+                while (n % i == 0) {
+                    cnt++;
+                    n /= i;
+                }
+
+                std::cout << i << "^" << cnt << ", ";
+            }
 		}
 	}
 }
