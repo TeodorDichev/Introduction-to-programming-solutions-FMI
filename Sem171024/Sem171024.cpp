@@ -13,10 +13,10 @@ int main()
 	//Problem1();
 	//Problem2();
 	//Problem3();
-	//Problem4();
+	Problem4();
 	//Problem5();
 	//Problem6();
-	Problem7();
+	//Problem7();
 }
 
 // Да се напише програма, която приема поток от числа.Числата се събират, докато не срещне числото 0.
