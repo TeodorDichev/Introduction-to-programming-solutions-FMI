@@ -1,17 +1,17 @@
 #include <iostream>
 
- void Problem07();
- void Problem08();
- void Problem09();
- void Problem10();
- void Problem11();
- void Problem12();
- void Problem13();
- void Problem14();
- void Problem15();
- void Problem16();
- void Problem17();
- void ProblemBonus();
+void Problem07();
+void Problem08();
+void Problem09();
+void Problem10();
+void Problem11();
+void Problem12();
+void Problem13();
+void Problem14();
+void Problem15();
+void Problem16();
+void Problem17();
+void ProblemBonus();
 
 int main() {
 	ProblemBonus();
@@ -27,7 +27,7 @@ void Problem07() {
 		if (num % i == 0)
 			sum += i;
 
-		std::cout << (num == sum) << std::endl;
+	std::cout << (num == sum) << std::endl;
 }
 
 // Да се напише програма, която приема положително цяло число. 
@@ -115,7 +115,7 @@ void Problem11() {
 void Problem12() {
 	int n, k = 0, sum = 0;
 	std::cin >> n;
-	
+
 	do
 	{
 		std::cin >> k;
@@ -158,11 +158,11 @@ void Problem13() {
 		int diff = (sum - (x + y) > 0 ? sum - (x + y) : (x + y) - sum);
 		sum = x + y;
 
-		if (diff > maxDiff) 
+		if (diff > maxDiff)
 			maxDiff = diff;
 	}
 
-	(maxDiff == 0) ? std::cout <<"Equal sums: " << sum << '\n' : std::cout << "Different sums. Max difference: " << maxDiff << '\n';
+	(maxDiff == 0) ? std::cout << "Equal sums: " << sum << '\n' : std::cout << "Different sums. Max difference: " << maxDiff << '\n';
 }
 
 // От конзолата се въвежда цяло положително число N. След това се подават N 
@@ -213,7 +213,7 @@ void Problem15() {
 // 1 2 3
 // 6 5 4
 // 7 8 9
- void Problem16() {
+void Problem16() {
 	int n;
 	std::cin >> n;
 
@@ -227,7 +227,7 @@ void Problem15() {
 			std::cout << '\n';
 		}
 		else {
-			for (; k <= i*n; k++)
+			for (; k <= i * n; k++)
 				std::cout << k << " ";
 
 			std::cout << '\n';
@@ -235,62 +235,62 @@ void Problem15() {
 	}
 }
 
- // Да се напише програма, която прочита от конзолата цяло нечетно число n и 
- // чертае вертикална стрелка с размери като в примерите по-долу:
- void Problem17() {
-	 int n;
-	 std::cin >> n;
-	 // top row
-	 // left dots
-	 for (int i = 0; i < n / 2; i++) std::cout << ".";
-	 // middle part
-	 for (int i = 0; i < n; i++) std::cout << "#";
-	 // right dots
-	 for (int i = 0; i < n / 2; i++) std::cout << ".";
-	 std::cout << '\n';
+// Да се напише програма, която прочита от конзолата цяло нечетно число n и 
+// чертае вертикална стрелка с размери като в примерите по-долу:
+void Problem17() {
+	int n;
+	std::cin >> n;
+	// top row
+	// left dots
+	for (int i = 0; i < n / 2; i++) std::cout << ".";
+	// middle part
+	for (int i = 0; i < n; i++) std::cout << "#";
+	// right dots
+	for (int i = 0; i < n / 2; i++) std::cout << ".";
+	std::cout << '\n';
 
-	 //arrow body
-	 for (int j = 0; j < n - 2; j++)
-	 {
-		 // left dots
-		 for (int i = 0; i < n / 2; i++) std::cout << ".";
-		 // middle part
-		 std::cout << "#";
-		 for (int i = 0; i < n - 2; i++) std::cout << ".";
-		 std::cout << "#";
-		 // right dots
-		 for (int i = 0; i < n / 2; i++) std::cout << ".";
-		 std::cout << '\n';
-	 }
+	//arrow body
+	for (int j = 0; j < n - 2; j++)
+	{
+		// left dots
+		for (int i = 0; i < n / 2; i++) std::cout << ".";
+		// middle part
+		std::cout << "#";
+		for (int i = 0; i < n - 2; i++) std::cout << ".";
+		std::cout << "#";
+		// right dots
+		for (int i = 0; i < n / 2; i++) std::cout << ".";
+		std::cout << '\n';
+	}
 
-	 // arrow head first row
-	 // left dots
-	 for (int i = 0; i < n / 2 + 1; i++) std::cout << "#";
-	 // middle part
-	 for (int i = 0; i < n - 2; i++) std::cout << ".";
-	 // right dots
-	 for (int i = 0; i < n / 2 + 1; i++) std::cout << "#";
-	 std::cout << '\n';
+	// arrow head first row
+	// left dots
+	for (int i = 0; i < n / 2 + 1; i++) std::cout << "#";
+	// middle part
+	for (int i = 0; i < n - 2; i++) std::cout << ".";
+	// right dots
+	for (int i = 0; i < n / 2 + 1; i++) std::cout << "#";
+	std::cout << '\n';
 
-	 //arrow head
-	 for (int j = 1; j < n - 1; j++)
-	 {
-		 // left dots
-		 for (int i = j; i > 0; i--) std::cout << ".";
-		 // middle part
-		 std::cout << "#";
-		 for (int i = 0; i < (2 * n - 1) - 2 * (j + 1); i++) std::cout << ".";
-		 std::cout << "#";
-		 // right dots
-		 for (int i = j; i > 0; i--) std::cout << ".";
-		 std::cout << '\n';
-	 }
+	//arrow head
+	for (int j = 1; j < n - 1; j++)
+	{
+		// left dots
+		for (int i = j; i > 0; i--) std::cout << ".";
+		// middle part
+		std::cout << "#";
+		for (int i = 0; i < (2 * n - 1) - 2 * (j + 1); i++) std::cout << ".";
+		std::cout << "#";
+		// right dots
+		for (int i = j; i > 0; i--) std::cout << ".";
+		std::cout << '\n';
+	}
 
-	 //last row
-	 for (int i = 0; i < n - 1; i++) std::cout << ".";
-	 std::cout << "#";
-	 for (int i = 0; i < n - 1; i++) std::cout << ".";
- }
+	//last row
+	for (int i = 0; i < n - 1; i++) std::cout << ".";
+	std::cout << "#";
+	for (int i = 0; i < n - 1; i++) std::cout << ".";
+}
 
 // Да се напише програма, която приема цяло положително число n и 
 // отпечатва числата от 1 до n*n в спираловиден вид.
@@ -298,56 +298,56 @@ void Problem15() {
 // 5 4 3 12
 // 6 1 2 11
 // 7 8 9 10
- void ProblemBonus() {
-	 int n;
-	 std::cin >> n;
-	 int num_elems = n * n;
+void ProblemBonus() {
+	int n;
+	std::cin >> n;
+	int num_elems = n * n;
 
-	 for (int y = 0; y < n; y++) {
-		 for (int x = 0; x < n; x++) {
-			 int side_len = n;
-			 int row = 0;
-			 int col = 0;
-			 int pos = 0;
+	for (int y = 0; y < n; y++) {
+		for (int x = 0; x < n; x++) {
+			int side_len = n;
+			int row = 0;
+			int col = 0;
+			int pos = 0;
 
-			 char direction = 'r';
-			 for (int i = num_elems; i > 0; i--) {
-				 if (row == y && col == x) {
-					 std::cout << i << ' ';
-					 break;
-				 }
-				 ++pos;
+			char direction = 'r';
+			for (int i = num_elems; i > 0; i--) {
+				if (row == y && col == x) {
+					std::cout << i << ' ';
+					break;
+				}
+				++pos;
 
-				 if (pos == side_len) {
+				if (pos == side_len) {
 
-					 if (direction == 'r') direction = 'd';
-					 else if (direction == 'd') direction = 'l';
-					 else if (direction == 'l') direction = 'u';
-					 else direction = 'r';
+					if (direction == 'r') direction = 'd';
+					else if (direction == 'd') direction = 'l';
+					else if (direction == 'l') direction = 'u';
+					else direction = 'r';
 
-					 pos = 0;
+					pos = 0;
 
-					 if (direction == 'd' || direction == 'u') {
-						 --side_len;
-					 }
-				 }
+					if (direction == 'd' || direction == 'u') {
+						--side_len;
+					}
+				}
 
-				 switch (direction) {
-				 case 'r':
-					 ++col;
-					 break;
-				 case 'd':
-					 ++row;
-					 break;
-				 case 'l':
-					 --col;
-					 break;
-				 case 'u':
-					 --row;
-					 break;
-				 }
-			 }
-			 std::cout << '\n';
-		 }
-	 }
- }
+				switch (direction) {
+				case 'r':
+					++col;
+					break;
+				case 'd':
+					++row;
+					break;
+				case 'l':
+					--col;
+					break;
+				case 'u':
+					--row;
+					break;
+				}
+			}
+			std::cout << '\n';
+		}
+	}
+}
