@@ -347,7 +347,7 @@ void ProblemBonus() {
 					break;
 				}
 			}
-			std::cout << '\n';
 		}
+		std::cout << '\n';
 	}
 }
