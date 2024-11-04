@@ -30,7 +30,6 @@ unsigned int log(unsigned int n, unsigned int k);
 
 int main()
 {
-
 }
 
 int pow(int number, int power) {
@@ -108,13 +107,14 @@ bool isPrime(int number) {
 int gcd(int a, int b) {
 	int gcd = a > b ? b : a;
 
-	while (gcd > 1) {
-		if (a % gcd == 0 && b % gcd == 0)
-			break;
-		gcd--;
+	while (b != 0)
+	{
+		int mod = a % b;
+		a = b;
+		b = mod;
 	}
 
-	return gcd;
+	return a;
 }
 
 int gcdRecursion(int a, int b) {
