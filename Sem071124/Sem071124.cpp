@@ -10,14 +10,12 @@ void printArray(const int* arr, int len);
 bool contains(const int* arr, int len, int searchedValue);
 int linearSearch(const int* arr, int len, int searchedValue);
 int binarySearch(const int* arr, int len, int searchedValue);
-int* reverseArray(int* arr, int len);
-int* selectionSort(int* arr, int len);
-void sieveOfEratosthenes(int* arr, int len);
+void reverseArray(int* arr, int len);
+void selectionSort(int* arr, int len);
+void sieveOfEratosthenes(int limit);
 
 int main() {
-	const int SIZE = 4;
-	int arr[SIZE] = { 1,2,3,4 };
-	std::cout << contains(arr, SIZE, 7);
+	sieveOfEratosthenes(23);
 	return 0;
 }
 
@@ -57,14 +55,12 @@ int binarySearch(const int* arr, int len, int searchedValue) {
 	return -1;
 }
 
-int* reverseArray(int* arr, int len) {
+void reverseArray(int* arr, int len) {
 	for (int i = 0; i < len / 2; i++)
 		swap(arr[i], arr[len - i - 1]);
-
-	return arr;
 }
 
-int* selectionSort(int* arr, int len) {
+void selectionSort(int* arr, int len) {
 	for (int i = 0; i < len - 1; ++i) {
 		int min_idx = i;
 
@@ -73,21 +69,29 @@ int* selectionSort(int* arr, int len) {
 				min_idx = j;
 
 		swap(arr[i], arr[min_idx]);
-	}	return arr;
+	}
 }
 
-void sieveOfEratosthenes(int* arr, int len)
+void sieveOfEratosthenes(int limit)
 {
-	for (int i = 0; i < len; i++)
-		arr[i] = true;
+	if (limit <= 0 && limit >= 1000) {
+		std::cout << "Invalid limit";
+		return;
+	}
 
-	for (int p = 2; p * p <= len; p++)
-		if (arr[p] == true)
-			for (int i = p * p; i <= len; i += p)
-				arr[i] = false;
+	const int MAX_SIZE = 1000;
+	bool primes[MAX_SIZE];
 
-	for (int p = 2; p <= len; p++)
-		if (arr[p])
+	for (int i = 2; i < limit; i++)
+		primes[i] = true;
+
+	for (int p = 2; p * p <= limit; p++)
+		if (primes[p] == true)
+			for (int i = p * p; i <= limit; i += p)
+				primes[i] = false;
+
+	for (int p = 2; p <= limit; p++)
+		if (primes[p])
 			std::cout << p << " ";
 }
 
