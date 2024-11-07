@@ -23,15 +23,8 @@ unsigned getDaysInMonth(unsigned month, unsigned year);
 void getLastShow(int n, unsigned int& maxHours, unsigned int& maxMins);
 
 int main() {
-	int n;
-	std::cin >> n;
-
-	unsigned int maxHours, maxMins;
-	getLastShow(n, maxHours, maxMins);
-
-	std::cout << maxHours << " " << maxMins << std::endl;
-
-	return 0;
+	char a = 65;
+	std::cout << a;
 }
 
 void swap(int& a, int& b) {
@@ -182,6 +175,7 @@ void getNumsWithTwoAdjacentEqualDigits(int k, int l) {
 			std::cout << num << " ";
 	}
 }
+
 int getNumLength(int num) {
 	int numDigits = 0;
 	for (int temp = num; temp > 0; temp /= 10)
