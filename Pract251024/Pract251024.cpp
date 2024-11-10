@@ -1,5 +1,5 @@
 #include <iostream>
-int pow(int number, int power);
+int pow(int base, int exponent);
 double squareRoot(double number);
 int myAbs(int number);
 int myAbs(int number);
@@ -30,14 +30,17 @@ unsigned int log(unsigned int n, unsigned int k);
 
 int main()
 {
+
 }
 
-int pow(int number, int power) {
-	if (power == 0) return 1;
+int pow(int base, int exponent) {
+	if (base == 0)	return 0;
+	int res = 1;
 
-	for (int i = number; power > 1; power--)
-		number *= i;
-	return number;
+	for (int i = 0; i < exponent; i++)
+		res *= base;
+
+	return res;
 }
 
 const int epsilon = 1.0E-8;
@@ -143,21 +146,11 @@ int reverse(int number) {
 	return reversed;
 }
 unsigned concat(unsigned int first, unsigned int second) {
-	int countOfDigits = -1;
-	unsigned res = 0;
+	int secondDigitsCount = 0;
 
-	first = reverse(first);
-	second = reverse(second);
+	for (int copyOfN = second; copyOfN > 0; copyOfN /= 10, secondDigitsCount++);
 
-	for (int copyOfN = first; copyOfN > 0; copyOfN /= 10, countOfDigits++);
-	for (int copyOfN = second; copyOfN > 0; copyOfN /= 10, countOfDigits++);
-
-	for (; first > 0; first /= 10, countOfDigits--)
-		res += (first % 10) * pow(10, countOfDigits);
-	for (; second > 0; second /= 10, countOfDigits--)
-		res += (second % 10) * pow(10, countOfDigits);
-
-	return res;
+	return first * pow(10, secondDigitsCount) + second;
 }
 
 double getDistance(int x1, int y1, int x2, int y2) {

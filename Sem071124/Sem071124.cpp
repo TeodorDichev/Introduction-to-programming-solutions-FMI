@@ -68,7 +68,7 @@ void selectionSort(int* arr, int len) {
 			if (arr[j] < arr[min_idx])
 				min_idx = j;
 
-		swap(arr[i], arr[min_idx]);
+		if(i != min_idx) swap(arr[i], arr[min_idx]);
 	}
 }
 
@@ -90,6 +90,7 @@ void sieveOfEratosthenes(int limit)
 			for (int i = p * p; i <= limit; i += p)
 				primes[i] = false;
 
+	// Print sieve
 	for (int p = 2; p <= limit; p++)
 		if (primes[p])
 			std::cout << p << " ";

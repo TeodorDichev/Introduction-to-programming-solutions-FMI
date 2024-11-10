@@ -195,12 +195,14 @@ void moveKDigitsToBeginning(int& a, int& b, int k) {
 	std::cout << a << " " << b;
 }
 
-int pow(int number, int power) {
-	if (power == 0) return 1;
+int pow(int base, int exponent) {
+	if (base == 0)	return 0;
+	int res = 1;
 
-	for (int i = number; power > 1; power--)
-		number *= i;
-	return number;
+	for (int i = 0; i < exponent; i++)
+		res *= base;
+
+	return res;
 }
 
 bool isDateValid(unsigned day, unsigned month, unsigned year) {
