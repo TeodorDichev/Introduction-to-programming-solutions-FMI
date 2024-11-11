@@ -1,5 +1,6 @@
 #include <iostream>
 void mergeAndSort(const int* arr1, const int size1, const int* arr2, const int size2, int* result);
+int AbsoluteValue(int number);
 void swap(int& a, int& b);
 void printArray(const int* arr, int len);
 void readArray(int* arr, int& size);
@@ -11,16 +12,20 @@ bool areEqual(const int* arr1, const int* arr2, const int size);
 void intersect(const int* arr1, const int size1, const int* arr2, const int size2, int* result, int& size);
 void unite(const int* arr1, const int size1, const int* arr2, const int size2, int* result, int& size);
 void selectionSort(int* arr, int len);
+int getMin(const int* arr, const int len);
+int getMax(const int* arr, const int len);
+void getPositiveArray(const int* arr, const int len, int* result, int& resultSize);
+int findMissingElement(int* arr, const int len);
+bool areLinearlyDependent(const int* arr1, const int* arr2, int size);
+bool containsDigit(int num, int digit);
+void nullElementsNotContainingDigitEqualToIndex(int* arr1, int size);
+bool isGeometricProgression(const int* arr, int size);
+int getLongestSequenceLength(const int* arr, int size);
+
 constexpr int MAX_SIZE = 100;
 int main()
 {
-	int arr1[MAX_SIZE];
-	int arrSize1 = 0;
-	int arr2[MAX_SIZE];
-	int arrSize2 = 0;
-	readArray(arr1, arrSize1);
-	readArray(arr2, arrSize2);
-	std::cout << containsArray(arr1, arrSize1, arr2, arrSize2);
+
 }
 
 void readArray(int* arr, int& size) {
@@ -99,7 +104,7 @@ void intersect(const int* arr1, const int size1, const int* arr2, const int size
 	for (int i = 0; i < size1; i++) {
 		for (int j = 0; j < size2; j++)
 		{
-			if((arr1[i] == arr2[j]) && !contains(result, size, arr1[i])) {
+			if ((arr1[i] == arr2[j]) && !contains(result, size, arr1[i])) {
 				// EDGE CASE: if arr1 and arr2 contain repeating elements we do not want to add them to the result
 				result[size] = arr1[i];
 				size++;
@@ -144,4 +149,110 @@ bool containsArray(const int* arr1, const int size1, const int* arr2, const int 
 	int unitedArrSize = 0;
 	unite(arr1, size1, arr2, size2, unitedArr, unitedArrSize);
 	return areEqual(arr1, unitedArr, unitedArrSize);
+}
+int getMin(const int* arr, const int len) {
+	int min = arr[0];
+	for (int i = 1; i < len; i++)
+		if (min > arr[i])
+			min = arr[i];
+	return min;
+}
+int getMax(const int* arr, const int len) {
+	int max = arr[0];
+	for (int i = 1; i < len; i++)
+		if (max < arr[i])
+			max = arr[i];
+	return max;
+}
+void getPositiveArray(const int* arr, const int len, int* result, int& resultSize) {
+	for (int i = 0; i < len; i++)
+	{
+		if (arr[i] > 0) {
+			result[resultSize] = arr[i];
+			resultSize++;
+		}
+	}
+}
+int AbsoluteValue(int number) {
+	return (number < 0) ? -number : number;
+}
+const double EPSILON = 1e-9;
+bool areLinearlyDependent(const int* arr1, const int* arr2, int size) {
+	double lambda = 0;
+	bool lambdaDefined = false;
+
+	for (int i = 0; i < size; i++) {
+		if (arr2[i] != 0) {
+			if (!lambdaDefined) {
+				lambda = double(arr1[i]) / arr2[i];
+				lambdaDefined = true;
+			}
+			else {
+				double currentLambda = double(arr1[i]) / arr2[i];
+				if (AbsoluteValue(currentLambda - lambda) > EPSILON) {
+					return false;
+				}
+			}
+		}
+		else if (arr1[i] != 0) {
+			// arr2[i] == 0, но arr1[i] != 0 => не може да съществува коефициент
+			return false;
+		}
+	}
+	return lambdaDefined;
+}
+int findMissingElement(int* arr, const int len) {
+	selectionSort(arr, len);
+	for (int i = 0; i < len; i++)
+		if (arr[i] != i)
+			return i;
+
+	return -1;
+}
+bool containsDigit(int num, int digit) {
+	while (num != 0) {
+		if (num % 10 == digit)
+			return true;
+
+		num /= 10;
+	}
+	return false;
+}
+void nullElementsNotContainingDigitEqualToIndex(int* arr1, int size) {
+	for (int i = 0; i < size; i++)
+		if (!containsDigit(arr1[i], i))
+			arr1[i] = 0;
+}
+bool isGeometricProgression(const int* arr, int size) {
+	double q = (double)(arr[1]) / arr[0];
+
+	for (int i = 1; i < size - 1; i++) {
+		double currentQ = (double)(arr[i + 1]) / arr[i];
+
+		if (AbsoluteValue(currentQ - q) > EPSILON)
+			return false;
+	}
+
+	return true;
+}
+int getLongestSequenceLength(const int* arr, int size) {
+	int maxLength = 1;
+	int currentLength = 1;
+
+	for (int i = 1; i < size; i++) {
+
+		if (arr[i] == arr[i - 1])
+			currentLength++;
+		else {
+			if (currentLength > maxLength)
+				maxLength = currentLength;
+
+			currentLength = 1;
+		}
+	}
+
+	if (currentLength > maxLength)
+		maxLength = currentLength;
+
+	return maxLength;
 }
