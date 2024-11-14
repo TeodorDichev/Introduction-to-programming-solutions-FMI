@@ -1,61 +1,57 @@
 #include <iostream>
 
-constexpr int rows = 3;
-constexpr int cols = 3;
-constexpr int defaultValue = -1;
-constexpr int circleValue = 0;
-constexpr int crossValue = 1;
+constexpr int size = 3;
 constexpr char defaultChar = '.';
 constexpr char circleChar = 'O';
 constexpr char crossChar = 'X';
 
-void printMatrix(const int matrix[rows][cols]);
-void initializeMatrix(int matrix[rows][cols]);
-void firstPlayerTurn(int matrix[rows][cols]);
-void secondPlayerTurn(int matrix[rows][cols]);
-bool isWinner(int matrix[rows][cols], const int winnerValue);
+void printMatrix(const char matrix[][size]);
+void initializeMatrix(char matrix[][size]);
+void playerTurn(char matrix[size][size], const char playerChar);
+bool isWinner(char matrix[][size], const char winnerChar);
 
 int main()
 {
-    int matrix[rows][cols]{ defaultValue };
+    char matrix[size][size];
 	initializeMatrix(matrix);
 	printMatrix(matrix);
-	while (true)
+	for (int roundCounter = 0; roundCounter < size * size; roundCounter++)
 	{
-		firstPlayerTurn(matrix);
-		printMatrix(matrix);
-		if (isWinner(matrix, circleValue)) {
-			std::cout << "Congrats player one, you have defeated your opponent!\n";
-			return 1;
+		if (roundCounter % 2 == 0) {
+			playerTurn(matrix, circleChar);
+			printMatrix(matrix);
+			if (isWinner(matrix, circleChar)) {
+				std::cout << "Congrats player one, you have defeated your opponent!\n";
+				return 1;
+			}
 		}
 
-		secondPlayerTurn(matrix);
-		printMatrix(matrix);
-		if (isWinner(matrix, crossValue)) {
-			std::cout << "Congrats player two, you have defeated your opponent!\n";
-			return 1;
+		else {
+			playerTurn(matrix, crossChar);
+			printMatrix(matrix);
+			if (isWinner(matrix, crossChar)) {
+				std::cout << "Congrats player two, you have defeated your opponent!\n";
+				return 1;
+			}
 		}
 	}
+
+	std::cout << "The game is a draw";
 }
 
-void initializeMatrix(int matrix[rows][cols]) {
+void initializeMatrix(char matrix[][size]) {
 	std::cout << "Welcome to DicDacDoe\n";
 
-	for (int i = 0; i < rows; i++)
-		for (int j = 0; j < cols; j++)
-			matrix[i][j] = defaultValue;
+	for (int i = 0; i < size; i++)
+		for (int j = 0; j < size; j++)
+			matrix[i][j] = defaultChar;
 }
 
-void printMatrix(const int matrix[rows][cols]) {
-	for (size_t i = 0; i < rows; i++)
+void printMatrix(const char matrix[][size]) {
+	for (size_t i = 0; i < size; i++)
 	{
-		for (size_t j = 0; j < cols; j++)
-		{
-			if (matrix[i][j] == -1) std::cout << " " << defaultChar << " |";
-			else if (matrix[i][j] == 0) std::cout << " " << circleChar << " |";
-			else if (matrix[i][j] == 1) std::cout << " " << crossChar << " |";
-			else std::cout << "?" << " |";
-		}
+		for (size_t j = 0; j < size; j++)
+			std::cout << " " << matrix[i][j] << " |";
 
 		std::cout << "\n";
 		std::cout << "------------";
@@ -63,16 +59,16 @@ void printMatrix(const int matrix[rows][cols]) {
 	}
 }
 
-void firstPlayerTurn(int matrix[rows][cols]) {
-	std::cout << "Player one, now is your turn, your symbol is: " << circleChar << "!\n";
+void playerTurn(char matrix[size][size], const char playerChar) {
+	std::cout << "Player " << playerChar << ", now is your turn!\n";
 	int currRow, currCol;
 
 	while (true) {
 		std::cout << "Choose a tile [row, col]: ";
 		std::cin >> currRow >> currCol;
 
-		if (currRow >= 0 && currRow < rows && currCol >= 0 && currCol < cols && matrix[currRow][currCol] == defaultValue) {
-			matrix[currRow][currCol] = circleValue;
+		if (currRow >= 0 && currRow < size && currCol >= 0 && currCol < size && matrix[currRow][currCol] == defaultChar) {
+			matrix[currRow][currCol] = playerChar;
 			break;
 		}
 
@@ -80,36 +76,19 @@ void firstPlayerTurn(int matrix[rows][cols]) {
 	}
 }
 
-void secondPlayerTurn(int matrix[rows][cols]) {
-	std::cout << "Player two, now is your turn, your symbol is: " << crossChar << "!\n";
-	int currRow, currCol;
-
-	while (true) {
-		std::cout << "Choose a tile [row, col]: ";
-		std::cin >> currRow >> currCol;
-
-		if (currRow >= 0 && currRow < rows && currCol >= 0 && currCol < cols && matrix[currRow][currCol] == defaultValue) {
-			matrix[currRow][currCol] = crossValue;
-			break;
-		}
-
-		std::cout << "Invalid tile! Please try again.\n";
-	}
-}
-
-bool isWinner(int matrix[rows][cols], const int winnerValue) {
-	for (size_t i = 0; i < rows; i++) {
-		if (matrix[i][0] == winnerValue && matrix[i][1] == winnerValue && matrix[i][2] == winnerValue)
+bool isWinner(char matrix[][size], const char winnerChar) {
+	for (size_t i = 0; i < size; i++) {
+		if (matrix[i][0] == winnerChar && matrix[i][1] == winnerChar && matrix[i][2] == winnerChar)
 			return true;
 
-		if (matrix[0][i] == winnerValue && matrix[1][i] == winnerValue && matrix[2][i] == winnerValue)
+		if (matrix[0][i] == winnerChar && matrix[1][i] == winnerChar && matrix[2][i] == winnerChar)
 			return true;
 	}
 
-	if (matrix[0][0] == winnerValue && matrix[1][1] == winnerValue && matrix[2][2] == winnerValue)
+	if (matrix[0][0] == winnerChar && matrix[1][1] == winnerChar && matrix[2][2] == winnerChar)
 		return true;
 
-	if (matrix[0][2] == winnerValue && matrix[1][1] == winnerValue && matrix[2][0] == winnerValue)
+	if (matrix[0][2] == winnerChar && matrix[1][1] == winnerChar && matrix[2][0] == winnerChar)
 		return true;
 
 	return false;
