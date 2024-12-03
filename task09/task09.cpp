@@ -1,20 +1,82 @@
-// task09.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Да се напише програма, която приема двумерна матрица(MxN) с M редове и N колони, 
+// (0 <= M, N <= 100).Да се изведат на конзолата координатите на тези стойности, 
+// които са най - малки спрямо колоната и реда си.
 
 #include <iostream>
 
-int main()
+constexpr size_t MAX_SIZE = 100;
+
+void readMatrix(int matrix[][MAX_SIZE], size_t rows, size_t cols);
+void searchMatrix(const int matrix[][MAX_SIZE], size_t rows, size_t cols);
+void printMinElement(size_t rowIndex, size_t colIndex);
+bool isMinElementOnRow(const int matrix[][MAX_SIZE], size_t cols, size_t rowIndex, size_t colIndex);
+bool isMinElementOnCol(const int matrix[][MAX_SIZE], size_t rows, size_t rowIndex, size_t colIndex);
+
+int main() 
 {
-    std::cout << "Hello World!\n";
+	size_t rows, cols;
+	std::cout << "Enter width and height of the matrix: ";
+	std::cin >> rows >> cols;
+
+	if (rows > MAX_SIZE || rows < 0 || cols > MAX_SIZE || cols < 0)
+	{
+		std::cout << "Invalud input!";
+		return -1;
+	}
+
+	int matrix[MAX_SIZE][MAX_SIZE];
+	std::cout << "Enter the matrix: \n";
+	readMatrix(matrix, rows, cols);
+
+	searchMatrix(matrix, rows, cols);
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void readMatrix(int matrix[][MAX_SIZE], size_t rows, size_t cols) {
+	for (size_t i = 0; i < rows; i++)
+		for (size_t j = 0; j < cols; j++)
+			std::cin >> matrix[i][j];
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+void searchMatrix(const int matrix[][MAX_SIZE], size_t rows, size_t cols) {
+	for (size_t i = 0; i < rows; i++)
+	{
+		for (size_t j = 0; j < cols; j++)
+		{
+			if (isMinElementOnRow(matrix, cols, i , j) && isMinElementOnCol(matrix, rows, i, j))
+			{
+				printMinElement(i, j);
+				break;
+			}
+		}
+	}
+}
+
+void printMinElement(size_t rowIndex, size_t colIndex) {
+	std::cout << "(" << rowIndex << ", " << colIndex << "), ";
+}
+
+bool isMinElementOnRow(const int matrix[][MAX_SIZE], size_t cols, size_t rowIndex, size_t colIndex) {
+	int minValue = matrix[rowIndex][colIndex];
+	for (size_t i = 0; i < cols; i++)
+	{
+		if (i == colIndex)
+			continue;
+		else if (matrix[rowIndex][i] < minValue)
+			return false;
+	}
+
+	return true;
+}
+
+bool isMinElementOnCol(const int matrix[][MAX_SIZE], size_t rows, size_t rowIndex, size_t colIndex) {
+	int minValue = matrix[rowIndex][colIndex];
+	for (size_t i = 0; i < rows; i++)
+	{
+		if (i == rowIndex)
+			continue;
+		else if (matrix[i][colIndex] < minValue)
+			return false;
+	}
+
+	return true;
+}
