@@ -1,40 +1,32 @@
 #include <iostream>
 
-size_t powerTwo(size_t n)
-{
-	return (n <= 31) ? (1 << n) : 0;
-}
-
-void innerLoop(const int arr[], size_t size, size_t i)
-{
+void printSubset(const int* arr, unsigned length, unsigned mask) {
 	std::cout << "{ ";
-
-	for (size_t j = 0; j < size; j++)
-	{
-		if ((i & powerTwo(j)) != 0)
-		{
-			std::cout << arr[j] << " ";
+	for (unsigned i = 0; i < length; i++) {
+		// if the i-th bit of the mask is 1
+		// then the i-th element of the array is in the subset
+		if (mask & 1) {
+			std::cout << arr[i] << " ";
 		}
+		// /= 2
+		mask >>= 1;
 	}
-
 	std::cout << "}" << std::endl;
 }
 
-void generateSubsets(const int arr[], size_t size)
-{
-	size_t allElements = powerTwo(size);
-
-	for (size_t i = 0; i < allElements; i++)
-	{
-		innerLoop(arr, size, i);
+void printSubsets(const int* arr, unsigned length) {
+	// every set has 2^N subsets
+	unsigned subsetsCount = 1 << length;
+	// every number from 0 to 2^N is a mask of a subset
+	// because every number has a different binary representation
+	for (unsigned i = 0; i < subsetsCount; i++) {
+		printSubset(arr, length, i);
 	}
 }
 
-int main()
-{
-	int arr[3]{ 1, 2, 3 };
-
-	generateSubsets(arr, 3);
-
-	return 0;
-}
+//int main() {
+//	const unsigned LENGTH = 5;
+//	int arr[LENGTH] = { 1, 2, 3, 4, 5 };
+//
+//	printSubsets(arr, LENGTH);
+//}
