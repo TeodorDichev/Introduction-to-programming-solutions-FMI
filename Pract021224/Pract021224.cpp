@@ -10,21 +10,19 @@ unsigned powerOfTwo(unsigned power) {
 bool checkBitValue(unsigned number, unsigned index) {
 	unsigned int mask = 1;
 	mask <<= index;
+
 	return (mask & number) == mask;
 }
-unsigned setBitZero(unsigned number, unsigned index) {
-	unsigned int mask = 1;
-	mask <<= index;
-	mask = ~mask;
-	return number & mask;
+unsigned flipRightmostSetBit(unsigned num) {
+	return num & (num - 1);
 }
 unsigned getNumFromBits(unsigned number, unsigned startIndex, unsigned length) {
-	// shift само ако има смисъл, cast защото иначе unsigned overflows
-	if ((int)(startIndex - length) + 1 >= 0)
+	// shift
+	if (startIndex > length)
 		number = number >> startIndex - length + 1;
 	// намали дължината така че да вземе само останалите цифри
 	else
-		length = length - startIndex;
+		length = startIndex;
 
 	// степен на двойката 2^k 0001 0000, k = 4
 	// вадим 1 -> 0000 1111
@@ -40,7 +38,6 @@ void bitSwap(unsigned& num1, unsigned& num2) {
 	num2 ^= num1;
 	num1 ^= num2;
 }
-
 void task06() {
 	int n, k;
 	std::cin >> n >> k;
@@ -49,17 +46,10 @@ void task06() {
 void task07() {
 	unsigned n;
 	std::cin >> n;
-
-	int i = 0;
-	while (n != 0)
-	{
-		if (checkBitValue(n, i)) {
-			n = setBitZero(n, i);
-			std::cout << n;
-			return;
-		}
-		i++;
-	}
+	if (n > 0)
+		std::cout << flipRightmostSetBit(n);
+	else
+		std::cout << 0;
 }
 void task08() {
 	int x, m, n;
@@ -90,12 +80,9 @@ void task11() {
 	unsigned int n;
 	std::cin >> n;
 	for (size_t i = 32; i > 0; i-=8)
-	{
 		std::cout << getNumFromBits(n, i, 9) << " ";
-	}
 }
 
 int main()
 {
-	task11();
 }
