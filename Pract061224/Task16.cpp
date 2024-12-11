@@ -88,11 +88,11 @@ void print(char* src) {
     }
 }
 
-int main() {
-    char input[MAX_SIZE];
-    char result[MAX_SIZE] = { '\0' }; //Initialize 'cause if input not valid print prints many unknow symbols
-
-    std::cin.getline(input, MAX_SIZE);
-    sortCharacters(input, result);
-    print(result);
-}
+//int main() {
+//    char input[MAX_SIZE];
+//    char result[MAX_SIZE] = { '\0' }; //Initialize 'cause if input not valid print prints many unknow symbols
+//
+//    std::cin.getline(input, MAX_SIZE);
+//    sortCharacters(input, result);
+//    print(result);
+//}
