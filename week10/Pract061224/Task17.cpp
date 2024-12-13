@@ -38,13 +38,13 @@ void print(char dest[MAX_WORDS][MAX_WORD_SIZE]) {
     }
 }
 
-int main() {
-    char input[MAX_INPUT_SIZE];
-    std::cin.getline(input, MAX_INPUT_SIZE);
-
-    // Опитах се да направя матрицата с указатели, но единственото ми решение на едно място използваше динамична памет
-    char wordsMtx[MAX_WORDS][MAX_WORD_SIZE] = { NULL_PTR };
-
-    separateToWords(input, wordsMtx, ' ');
-    print(wordsMtx);
-}
+//int main() {
+//    char input[MAX_INPUT_SIZE];
+//    std::cin.getline(input, MAX_INPUT_SIZE);
+//
+//    // Опитах се да направя матрицата с указатели, но единственото ми решение на едно място използваше динамична памет
+//    char wordsMtx[MAX_WORDS][MAX_WORD_SIZE] = { NULL_PTR };
+//
+//    separateToWords(input, wordsMtx, ' ');
+//    print(wordsMtx);
+//}

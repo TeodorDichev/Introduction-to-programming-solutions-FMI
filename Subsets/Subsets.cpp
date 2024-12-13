@@ -24,9 +24,9 @@ void printSubsets(const int* arr, unsigned length) {
 	}
 }
 
-//int main() {
-//	const unsigned LENGTH = 5;
-//	int arr[LENGTH] = { 1, 2, 3, 4, 5 };
-//
-//	printSubsets(arr, LENGTH);
-//}
+int main() {
+	const unsigned LENGTH = 5;
+	int arr[LENGTH] = { 1, 2, 3, 4, 5 };
+
+	printSubsets(arr, LENGTH);
+}

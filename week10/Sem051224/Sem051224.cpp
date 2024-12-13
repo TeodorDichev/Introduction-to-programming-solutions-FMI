@@ -86,15 +86,15 @@ const char* findMostFrequentWord(char words[MAX_WORDS][MAX_WORD_LENGTH], int wor
 
 	return mostFrequentWord;
 }
-
-int main() {
-	char input[MAX_INPUT_SIZE];
-	char words[MAX_WORDS][MAX_WORD_LENGTH];
-
-	std::cin.getline(input, MAX_INPUT_SIZE);
-
-	toLowerCase(input);
-	int wordCount = splitIntoWords(input, words);
-
-	std::cout << "The most frequent word is: " << findMostFrequentWord(words, wordCount) << '\n';
-}
+//
+//int main() {
+//	char input[MAX_INPUT_SIZE];
+//	char words[MAX_WORDS][MAX_WORD_LENGTH];
+//
+//	std::cin.getline(input, MAX_INPUT_SIZE);
+//
+//	toLowerCase(input);
+//	int wordCount = splitIntoWords(input, words);
+//
+//	std::cout << "The most frequent word is: " << findMostFrequentWord(words, wordCount) << '\n';
+//}
